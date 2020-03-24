@@ -25,6 +25,9 @@ mapped_records = RecordsMapper.call(records)
 # Sort records first by date, then by type
 sorted_records = RecordsSorter.call(mapped_records)
 
+# Process each grant's current state: num of units granted, sold, left,
+# and process the amount of realized gain for each employee
+# Assumption: older units are sold first because they expire earlier and likely have lower prices
 processed_records = RecordsProcessor.call(sorted_records)
 
 puts GainsCalculator.call(
