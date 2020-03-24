@@ -7,10 +7,9 @@ bundle install
 
 ### Run App
 ```
-ruby app.rb < <input-file>
+ruby app.rb < input.def
 ```
 
-Example `ruby app.rb < 1.txt`
 
 ### Run Tests
 The calculator uses [RSpec](https://github.com/rspec/rspec) as test framework. 
@@ -21,5 +20,5 @@ bundle exec rspec
 ```
 - Running tests for a specific file: 
 ```
-bundle exec rspec spec/app.rb
+bundle exec rspec spec/solution_spec.rb
 ```
