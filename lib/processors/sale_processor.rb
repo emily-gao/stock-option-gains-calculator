@@ -5,7 +5,10 @@ module Processors
       price_sold = record[:price]
 
       employee_data[:grants].each do |grant|
-        units_sold = grant[:units_left] > total_units_sold ? total_units_sold : grant[:units_left]
+        # You would not exercise an option whose grant price is more than market price
+        next if grant[:grant_price] >= price_sold
+
+        units_sold = [total_units_sold, grant[:units_left]].min
 
         employee_data[:realized_gain] += units_sold * (price_sold - grant[:grant_price])
         grant[:units_sold] += units_sold
