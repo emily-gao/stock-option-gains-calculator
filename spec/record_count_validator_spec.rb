@@ -20,7 +20,7 @@ describe RecordCountValidator do
       }
 
       it 'aborts with error message' do
-        expect { call_validator }.to output(error_message).to_stderr
+        expect { call_validator }.to raise_error(SystemExit, error_message)
       end
     end
   end

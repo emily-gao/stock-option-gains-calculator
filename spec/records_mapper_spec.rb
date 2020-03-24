@@ -24,10 +24,10 @@ describe RecordsMapper do
     context 'when mapper class is not found' do
       let(:record_1) { ['NOT DUMMY'] }
       let(:record_2) { ['NOT DUMMY'] }
-      let(:error_message) { "ABORTED! Unsupported record type (NOT DUMMY) detected on row 1"}
+      let(:error_message) { "ABORTED! Unsupported record type (NOT DUMMY) detected on row 1." }
 
       it 'aborts with error message' do
-        expect { call_mapper }.to output(error_message).to_stderr
+        expect { call_mapper }.to raise_error(SystemExit, error_message)
       end
     end
 end

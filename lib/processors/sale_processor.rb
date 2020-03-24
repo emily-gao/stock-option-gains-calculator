@@ -21,7 +21,7 @@ module Processors
       if total_units_sold > 0
         abort(
           "ABORTED! "\
-          "Employee #{record[:employee_id]} sold more units than available on #{record[:date]}"
+          "Employee #{record[:employee_id]} sold more units than available on #{record[:date]}."
         )
       end
 
