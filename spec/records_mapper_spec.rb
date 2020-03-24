@@ -2,7 +2,7 @@ require './lib/records_mapper'
 
 describe RecordsMapper do
   describe '.call' do
-    let(:records) { [record_1, record_2]}
+    let(:records) { [record_1, record_2] }
     let(:call_mapper) { described_class.call(records) }
 
     context 'when mapper class is found' do
@@ -24,13 +24,17 @@ describe RecordsMapper do
     context 'when mapper class is not found' do
       let(:record_1) { ['NOT DUMMY'] }
       let(:record_2) { ['NOT DUMMY'] }
-      let(:error_message) { "ABORTED! Unsupported record type (NOT DUMMY) detected on row 1." }
+      let(:error_message) { "ABORTED! Unsupported record type (NOT DUMMY) detected on row 1.\n" }
 
       it 'aborts with error message' do
-        expect { call_mapper }.to raise_error(SystemExit, error_message)
+        expect {
+          begin call_mapper
+          rescue SystemExit
+          end
+        }.to output(error_message).to_stderr
       end
     end
-end
+  end
 end
 
 private

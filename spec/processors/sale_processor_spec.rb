@@ -15,7 +15,7 @@ describe Processors::SALEProcessor do
     let(:employee_id) { '001B' }
     let(:date) { '20120101' }
     let(:error_message) {
-      "ABORTED! Employee #{employee_id} sold more units than available on #{date}."
+      "ABORTED! Employee #{employee_id} sold more units than available on #{date}.\n"
     }
     let(:call_processor) { described_class.call(employee_data: employee_data, record: record) }
 
@@ -40,7 +40,11 @@ describe Processors::SALEProcessor do
       let(:total_units_sold) { 120 }
 
       it 'aborts with error message' do
-        expect { call_processor }.to raise_error(SystemExit, error_message)
+        expect {
+          begin call_processor
+          rescue SystemExit
+          end
+        }.to output(error_message).to_stderr
       end
     end
   end

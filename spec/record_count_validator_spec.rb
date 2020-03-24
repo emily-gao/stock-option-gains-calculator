@@ -16,11 +16,15 @@ describe RecordCountValidator do
     context 'when provided and actual do not match' do
       let(:actual) { provided + 1 }
       let(:error_message) {
-        "ABORTED! Provided record count is #{provided} but actual record count is #{actual}."
+        "ABORTED! Provided record count is #{provided} but actual record count is #{actual}.\n"
       }
 
       it 'aborts with error message' do
-        expect { call_validator }.to raise_error(SystemExit, error_message)
+        expect {
+          begin call_validator
+          rescue SystemExit
+          end
+        }.to output(error_message).to_stderr
       end
     end
   end
