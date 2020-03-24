@@ -7,9 +7,13 @@ bundle install
 
 ### Run App
 Replace `input.def` with your own file. 
-There are three test input files under folder `sample_input_files`. 
 ```
 ruby app.rb < input.def
+```
+
+For quick testing, you can use one of the three sample input files.
+```
+ruby app.rb < sample_input_files/input_3.def
 ```
 
 
