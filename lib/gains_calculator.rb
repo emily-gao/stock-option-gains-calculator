@@ -14,11 +14,18 @@ class GainsCalculator
       end
 
       # Divide sum by 100 since prices are records in cents
-      output << "#{employee_id},"\
-        "#{'%.2f' % (unrealized_gain_sum / 100.to_f)},"\
-        "#{'%.2f' % (data[:realized_gain] / 100.to_f)}\n"
+      output << "#{employee_id},#{format(unrealized_gain_sum)},#{format(data[:realized_gain])}\n"
     end
 
     output
+  end
+
+  class << self
+    private
+
+    # Convert cents to dollar and always show two decimal points
+    def format(amount)
+      '%.2f' % (amount / 100.to_f)
+    end
   end
 end
