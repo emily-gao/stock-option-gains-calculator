@@ -1,4 +1,4 @@
-Note: You need to have Ruby installed first. 
+This is a [Ruby](https://www.ruby-lang.org/en/) app that calculates the realized and unrealized gains for multiple employees given a history of stock option grants, sales and performance bonuses.
 
 ### Build App
 ```
@@ -10,7 +10,16 @@ bundle install
 ruby app.rb < <input-file>
 ```
 
-### Testing
+Example `ruby app.rb < 1.txt`
+
+### Run Tests
+The calculator uses [RSpec](https://github.com/rspec/rspec) as test framework. 
+
+- Running all tests:
 ```
-ruby app.rb < 1.txt
+bundle exec rspec
+```
+- Running tests for a specific file: 
+```
+bundle exec rspec spec/app.rb
 ```
