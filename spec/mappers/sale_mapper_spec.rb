@@ -8,6 +8,7 @@ describe Mappers::SALEMapper do
     let(:date) { '20120101' }
     let(:units) { '100' }
     let(:price) { '0.45' }
+    let(:parsed_price) { 45 }
     let(:result) {
       {
         type: type,
@@ -18,6 +19,10 @@ describe Mappers::SALEMapper do
       }
     }
     let(:call_mapper) { described_class.call(record) }
+
+    before(:each) do
+      allow(PriceParser).to receive(:call).with(price).and_return(parsed_price)
+    end
 
     it 'returns hash with correct values' do
       expect(call_mapper).to eq(result)

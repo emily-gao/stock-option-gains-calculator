@@ -1,3 +1,5 @@
+require_relative '../helpers/price_parser'
+
 module Mappers
   class VESTMapper
     def self.call(record)
@@ -6,7 +8,7 @@ module Mappers
         employee_id: record[1],
         date: record[2],
         units: record[3].to_i,
-        price: (record[4].to_f * 100).to_i
+        price: PriceParser.call(record[4])
       }
     end
   end
