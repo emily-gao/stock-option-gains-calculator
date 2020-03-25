@@ -3,7 +3,7 @@ class RecordsSorter
 
   def self.call(mapped_records)
     mapped_records.sort_by do |record|
-      [record[:date], ORDERED_TYPES.index(record[:type]), record[:price]]
+      [record[:employee_id], record[:date], ORDERED_TYPES.index(record[:type]), record[:price]]
     end
   end
 end
