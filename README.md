@@ -13,7 +13,7 @@ ruby app.rb < input.def
 
 For quick testing, you can use one of the three sample input files.
 ```
-ruby app.rb < sample_input_files/input_3.def
+ruby app.rb < sample_files/input_1.def
 ```
 
 
